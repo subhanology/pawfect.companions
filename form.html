@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Pawfect Companions</title>
+</head>
+<body>
+    <div class="main">
+        <div class="webname">
+            <img src="logo.png" alt="Logo">
+            <a href="index.html">Pawfect Companions</a>
+        </div>
+        <div class="navbar">
+            <a id="nav1" href="index.html" target="_self">Home</a>
+            <a id="nav2" href="donate.html" target="_self">Donate</a>
+            <button type="button" class="btn btn-danger adopt-button"> <a href="adopt.html" >Adopt</a></button>
+        </div>
+    </div>
+
+    <form method="post" name="google-sheet">
+        <h3>Personal Information</h3>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+        
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+        
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+        
+        <label for="state">State/Province:</label>
+        <input type="text" id="state" name="state" required>
+        
+        <label for="zip">Zip Code:</label>
+        <input type="text" id="zip" name="zip" required>
+        
+        <label for="contact_method">Preferred Method of Contact:</label>
+        <select id="contact_method" name="contact_method">
+            <option value="phone">Phone</option>
+            <option value="email">Email</option>
+        </select>
+    
+        <h3>Living Situation</h3>
+        <label for="living_situation">Do you live in a House or Apartment?</label>
+        <select id="living_situation" name="living_situation" required>
+            <option value="house">House</option>
+            <option value="apartment">Apartment</option>
+        </select>
+        
+        <label for="yard">Do you have a yard or outdoor space?</label>
+        <select id="yard" name="yard" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        
+        <label for="landlord_permission">Do you have landlord permission to have a pet? (if applicable)</label>
+        <input type="text" id="landlord_permission" name="landlord_permission">
+    
+        <h3>Pet Experience</h3>
+        <label for="pet_experience">Have you owned pets before?</label>
+        <select id="pet_experience" name="pet_experience" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        
+        <label for="current_pets">Do you currently have any other pets?</label>
+        <select id="current_pets" name="current_pets" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        
+        <label for="current_pets_list">If yes, please list their names and types:</label>
+        <textarea id="current_pets_list" name="current_pets_list"></textarea>
+        
+        <label for="spayed_neutered">Are your current pets spayed/neutered?</label>
+        <select id="spayed_neutered" name="spayed_neutered" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+    
+        <h3>Adoption Purpose</h3>
+        <label for="adopt_purpose">Why do you want to adopt a pet?</label>
+        <textarea id="adopt_purpose" name="adopt_purpose" required></textarea>
+    
+        <h3>Agreement and Signature</h3>
+        <label for="agreement">I acknowledge that the information provided above is accurate and that I agree to the adoption terms and conditions:</label>
+        <select id="agreement" name="agreement" required>
+            <option value="agree">I Agree</option>
+            <option value="disagree">I Disagree</option>
+        </select>
+    
+        <button type="submit" class="btn btn-primary">Submit Application</button>
+
+    </form>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@pawfectcompanions.com</p>
+                <p>Phone: (123) 456 7890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+            </div>
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>We are dedicated to rescuing abandoned and abused animals.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Pawfect Companions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxOGZuP1hIdzI9_sY1YsoqKyxqT-qJR5nKySxbLRnv3VovxZJ2laIUqfy67-W1AntMJAg/exec'
+        const form = document.forms['google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Your Data Is Submitted!"))
+            .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+</body>
+</html>
